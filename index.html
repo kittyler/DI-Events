@@ -1231,19 +1231,22 @@ function renderCalendar(list) {
     }
   });
 
-  // Build a continuous month range: this month through the month of the latest event
+  // Figure out the last month we need to render.
+  // rangeEndMonth is the first day of the month AFTER the latest event's end month,
+  // so the loop condition cursor < rangeEndMonth covers the entire latest month.
   const latestIso = list.reduce((acc, e) => e.end > acc ? e.end : acc, list[0].end);
   const latestDate = parseDate(latestIso);
-  // Cap the window at 12 months so we don't render hundreds of empty months if an outlier is far out
-  const maxEnd = new Date(TODAY.getFullYear(), TODAY.getMonth() + 12, 1);
-  const rangeEnd = latestDate < maxEnd ? latestDate : maxEnd;
-
+  const latestMonthStart = new Date(latestDate.getFullYear(), latestDate.getMonth(), 1);
+  // Cap at 18 months ahead so outliers don't balloon the page
+  const maxMonthStart = new Date(TODAY.getFullYear(), TODAY.getMonth() + 18, 1);
+  const finalMonthStart = latestMonthStart < maxMonthStart ? latestMonthStart : maxMonthStart;
+  // rangeEndMonth is exclusive: loop while cursor <= finalMonthStart
   const dowLabels = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
   const todayStr = TODAY.toISOString().slice(0,10);
   const monthsHtml = [];
 
   let cursor = new Date(TODAY.getFullYear(), TODAY.getMonth(), 1);
-  while (cursor <= rangeEnd) {
+  while (cursor <= finalMonthStart) {
     const y = cursor.getFullYear();
     const m = cursor.getMonth(); // 0-based
     const monthName = cursor.toLocaleString("en-GB", { month: "long", year: "numeric" });
@@ -1367,38 +1370,30 @@ function renderSources() {
   const rows = SOURCES.map(s => `
     <tr style="border-top: 1px solid var(--line-soft);">
       <td style="padding: 10px 14px; font-weight: 500; vertical-align: top;">${s.name}</td>
-      <td style="padding: 10px 14px; word-break: break-all;"><a href="${s.url}" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">${s.url}</a></td>
-      <td style="padding: 10px 14px; color: var(--ink-soft); vertical-align: top;">${s.method}</td>
-      <td style="padding: 10px 14px; color: var(--ink-soft); vertical-align: top; white-space: nowrap;">${s.schedule}</td>
+      <td style="padding: 10px 14px; word-break: break-all; vertical-align: top;"><a href="${s.url}" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">${s.url}</a></td>
     </tr>`).join("");
 
   $("#view-container").innerHTML = `
     <div style="border: 1px solid var(--line); border-radius: 6px; overflow: hidden;">
       <table style="width: 100%; border-collapse: collapse; background: var(--panel); font-size: 12.5px; table-layout: fixed;">
         <colgroup>
-          <col style="width: 28%;">
-          <col style="width: 52%;">
-          <col style="width: 10%;">
-          <col style="width: 10%;">
+          <col style="width: 32%;">
+          <col style="width: 68%;">
         </colgroup>
         <thead>
           <tr style="background: #fbfaf6;">
-            <th style="padding: 10px 14px; text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute);">Source</th>
+            <th style="padding: 10px 14px; text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute);">Organisation</th>
             <th style="padding: 10px 14px; text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute);">URL</th>
-            <th style="padding: 10px 14px; text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute);">Method</th>
-            <th style="padding: 10px 14px; text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute);">Schedule</th>
           </tr>
         </thead>
         <tbody>${rows}</tbody>
       </table>
     </div>
     <p style="margin-top: 16px; font-size: 12px; color: var(--ink-soft);">
-      Each source is fetched on the listed schedule. Pages are passed through an LLM extractor that produces structured event records against a fixed schema. Events are deduplicated by title + date + city, then written to the database that powers this dashboard.
+      Each source is fetched weekly. Pages are passed through an LLM extractor that produces structured event records. Events are deduplicated by title + date + city, then written to the database that powers this dashboard.
     </p>`;
 }
 
-/* ============================================================
-   RENDER: ABOUT PAGE
 /* ============================================================
    RENDER: MAIN
    ============================================================ */
