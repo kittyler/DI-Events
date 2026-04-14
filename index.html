@@ -461,6 +461,13 @@
   }
   .event-side .cost-amt { font-weight: 600; color: var(--ink); display: block; font-size: 12px; }
   .event-side .days-away { margin-top: 3px; color: var(--ink-mute); }
+  .event-side .generic-flag {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 10px;
+    color: var(--ink-mute);
+    font-style: italic;
+  }
 
   /* Calendar view */
   .calendar {
@@ -815,7 +822,7 @@
   <div class="page-header">
     <div>
       <h1 class="page-title" id="page-title">Upcoming events</h1>
-      <div class="page-sub" id="page-sub">Real events from 12 sources. Click any event to view full details.</div>
+      <div class="page-sub" id="page-sub">Real events from 26 sources. Click any event to view full details.</div>
     </div>
     <div class="view-toggle" id="view-toggle">
       <button class="active" data-view="list">List</button>
@@ -921,7 +928,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div>
-      <span id="footer-count">—</span> events · 12 sources · Updated daily at 06:00 UK
+      <span id="footer-count">—</span> events · 26 sources · Updated daily at 06:00 UK
     </div>
     <div>
       <a href="#" id="submit-event">Submit an event</a> ·
@@ -964,17 +971,31 @@ let EVENTS = []; // populated from events.json at runtime
 
 const SOURCES = [
   { name: "Global Investigations Review", url: "https://globalinvestigationsreview.com/events", method: "Scrape", schedule: "Daily 06:00" },
-  { name: "ACAMS", url: "https://www.acams.org/en/events", method: "Scrape + RSS", schedule: "Daily 06:00" },
-  { name: "LCIA", url: "https://www.lcia.org", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "ACAMS", url: "https://www.acams.org/en/events/acams-events-view-all-upcoming-events", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "C5 Anti-Corruption London", url: "https://www.c5-online.com/ac-london/", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "C5 FCPA Portfolio", url: "https://www.c5-online.com/conference/anti-corruption-fcpa/", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "Cambridge Economic Crime Symposium", url: "https://www.crimesymposium.org/register", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "RUSI CFS", url: "https://www.rusi.org/explore-our-research/research-groups/centre-for-finance-and-security", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "London Court of International Arbitration", url: "https://www.lcia.org/lcia-events/events_schedule.aspx", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "Young International Arbitration Group", url: "https://www.lcia.org/Membership/YIAG/Young_International_Arbitration_Group.aspx", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "International Chamber of Commerce", url: "https://iccwbo.org/news-publications/events/", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "ICC Young Arbitrators Forum", url: "https://iccwbo.org/dispute-resolution/professional-development/young-arbitrators-forum-yaf/", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "ICC United Kingdom", url: "https://iccwbo.uk/collections/events", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "International Council for Commercial Arbitration", url: "https://www.arbitration-icca.org/events", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "Young ICCA", url: "https://www.youngicca.org/events", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "Chartered Institute of Arbitrators", url: "https://www.ciarb.org/events", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "Arbitral Women", url: "https://www.arbitralwomen.org/aw-events/", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "Delos Dispute Resolution", url: "https://delosdr.org/index.php/delos-events-calendar/", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "Global Arbitration Review", url: "https://globalarbitrationreview.com/events", method: "Scrape", schedule: "Daily 06:00" },
   { name: "LIDW", url: "https://register.lidw.co.uk/", method: "Scrape", schedule: "Daily 06:00" },
-  { name: "C5 Group / Informa", url: "https://www.c5-online.com", method: "Scrape", schedule: "Daily 06:00" },
-  { name: "American Conference Institute", url: "https://www.americanconference.com", method: "Scrape", schedule: "Daily 06:00" },
-  { name: "Jesus College Cambridge (CIDOEC)", url: "https://www.crimesymposium.org", method: "Scrape", schedule: "Weekly" },
-  { name: "RUSI Centre for Finance & Security", url: "https://www.rusi.org", method: "Scrape + RSS", schedule: "Daily 06:00" },
-  { name: "International Chamber of Commerce", url: "https://iccwbo.org", method: "Scrape", schedule: "Weekly" },
   { name: "IAC London Arbitration Calendar", url: "https://www.iac-london.com/arbitral-events-2026/", method: "Scrape", schedule: "Weekly" },
-  { name: "Herbert Smith Freehills", url: "https://www.hsfkramer.com/events", method: "RSS", schedule: "Daily 06:00" },
-  { name: "Gibson Dunn Webcasts", url: "https://www.gibsondunn.com/events/", method: "Scrape", schedule: "Daily 06:00" }
+  { name: "Commercial Dispute Resolution", url: "https://www.cdr-news.com/conferences/", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "Thought Leaders 4", url: "https://thoughtleaders4.com/", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "International Bar Association", url: "https://www.ibanet.org/conferences", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "British Institute of International and Comparative Law", url: "https://www.biicl.org/events", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "Herbert Smith Freehills", url: "https://www.hsfkramer.com/events", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "Gibson Dunn", url: "https://www.gibsondunn.com/events/", method: "Scrape", schedule: "Daily 06:00" },
+  { name: "WilmerHale", url: "https://www.wilmerhale.com/en/insights/events", method: "Scrape", schedule: "Daily 06:00" }
 ];
 
 /* ============================================================
@@ -1001,6 +1022,21 @@ const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
 function parseDate(iso) { return new Date(iso + "T00:00:00"); }
+
+// Heuristic: does this URL look like a generic organiser page or a real event page?
+// Generic = very short path, likely the homepage or a top-level listing.
+function isGenericUrl(url, sourceUrls) {
+  if (!url) return true;
+  try {
+    const u = new URL(url);
+    // If it matches one of the known source URLs exactly, it's a fallback
+    if (sourceUrls && sourceUrls.has(url)) return true;
+    // If the path is empty or very short (e.g. /, /events, /events/), likely generic
+    const path = u.pathname.replace(/\/$/, "");
+    if (path === "" || path === "/events" || path === "/news-publications/events") return true;
+    return false;
+  } catch { return true; }
+}
 function fmtDate(iso) {
   const d = parseDate(iso);
   return {
@@ -1079,7 +1115,7 @@ function renderKPIs() {
   const free = upcoming.filter(e => e.cost === "Free").length;
 
   $("#kpi-row").innerHTML = `
-    <div class="kpi"><div class="kpi-label">Upcoming events</div><div class="kpi-value">${upcoming.length}</div><div class="kpi-sub">Across 12 sources</div></div>
+    <div class="kpi"><div class="kpi-label">Upcoming events</div><div class="kpi-value">${upcoming.length}</div><div class="kpi-sub">Across 26 sources</div></div>
     <div class="kpi"><div class="kpi-label">Next 30 days</div><div class="kpi-value">${next30.length}</div><div class="kpi-sub">${inPerson30} in-person · ${next30.length - inPerson30} other</div></div>
     <div class="kpi"><div class="kpi-label">Flagship events</div><div class="kpi-value">${flagship}</div><div class="kpi-sub">Marquee dates</div></div>
     <div class="kpi"><div class="kpi-label">Free events</div><div class="kpi-value">${free}</div><div class="kpi-sub">No ticket cost</div></div>
@@ -1169,6 +1205,7 @@ function renderList(list) {
       <div class="event-side">
         <span class="cost-amt">${e.costDisplay}</span>
         <span class="days-away">${daysAwayLabel(daysAway)}</span>
+        ${isGenericUrl(e.url) ? '<span class="generic-flag" title="Links to organiser page — no per-event URL available">listing only</span>' : ''}
       </div>
     </button>`;
   }).join("") + `</div>`;
@@ -1358,7 +1395,7 @@ function renderAbout() {
       <p style="margin-bottom: 12px;">A scheduled job fetches each configured source page once a day. Page HTML is passed to an LLM that extracts structured event records: title, organiser, dates, location, format, topics, cost, registration URL. Records are deduplicated and written to a database. This dashboard reads from that database.</p>
 
       <h4 style="font-family: Georgia, serif; font-size: 14px; color: var(--ink); margin: 20px 0 8px;">Coverage</h4>
-      <p style="margin-bottom: 12px;">Currently 12 sources spanning commercial conference organisers (GIR, ACAMS, C5, ACI), regulators (RUSI), academic institutions (Cambridge CIDOEC), professional bodies (LCIA, ICC), and law firm events (HSF, Gibson Dunn). New sources can be added by editing the configuration — the LLM handles page parsing without bespoke code per source.</p>
+      <p style="margin-bottom: 12px;">Currently 26 sources spanning commercial conference organisers (GIR, ACAMS, C5), regulators and think tanks (RUSI), academic institutions (Cambridge CIDOEC, BIICL), arbitration institutions (LCIA, ICC, ICCA, CIArb, Delos, Arbitral Women), dispute-resolution media (GAR, CDR, Thought Leaders 4, LIDW), bar associations (IBA), and law firm events (HSF, Gibson Dunn, WilmerHale). New sources can be added by editing the configuration — the LLM handles page parsing without bespoke code per source.</p>
 
       <h4 style="font-family: Georgia, serif; font-size: 14px; color: var(--ink); margin: 20px 0 8px;">Data quality</h4>
       <p style="margin-bottom: 12px;">The extractor returns a confidence score for each event. Records below 0.5 are flagged for manual review. Events past their end date are hidden from default views. Every registration URL is retained as source-of-truth — if the data shown here is wrong, the organiser's page is authoritative.</p>
@@ -1393,7 +1430,7 @@ function render() {
     } else {
       $("#content-title").textContent = "Upcoming events";
       $("#page-title").textContent = "Upcoming events";
-      $("#page-sub").textContent = "Real events from 12 sources. Click any event to view full details.";
+      $("#page-sub").textContent = "Real events from 26 sources. Click any event to view full details.";
       renderList(list);
     }
   } else if (state.page === "sources") {
@@ -1451,6 +1488,7 @@ function openModal(id) {
 
   $("#m-meta").textContent = `ID: ${e.id}`;
   $("#m-register").href = e.url;
+  $("#m-register").textContent = isGenericUrl(e.url) ? "Visit organiser ↗" : "Register ↗";
   $("#m-ics").onclick = () => downloadICS(e);
 
   $("#modal").classList.add("open");
