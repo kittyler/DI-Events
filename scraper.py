@@ -30,10 +30,22 @@ import httpx
 from bs4 import BeautifulSoup
 from anthropic import Anthropic
 
-OUTPUT_DIR = Path(os.environ.get("OUTPUT_DIR", "public"))
+OUTPUT_DIR = Path(os.environ.get("OUTPUT_DIR", "."))
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-
 DB_PATH = OUTPUT_DIR / "events.db"
+
+# Self-heal: if events.db exists but isn't a valid SQLite file, delete it
+# so a fresh one can be created. Common when the file got corrupted in
+# a manual move or upload.
+if DB_PATH.exists():
+    try:
+        import sqlite3 as _sq
+        _conn = _sq.connect(DB_PATH)
+        _conn.execute("SELECT 1")
+        _conn.close()
+    except _sq.DatabaseError:
+        print(f"⚠ {DB_PATH} is corrupted — deleting so a fresh database can be created")
+        DB_PATH.unlink()
 
 FOLLOW_EVENT_LINKS = os.environ.get("FOLLOW_EVENT_LINKS", "false").lower() == "true"
 
