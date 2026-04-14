@@ -30,14 +30,14 @@ jobs:
       - name: Run scraper
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          OUTPUT_DIR: public
+          OUTPUT_DIR: .
         run: python scraper.py
 
       - name: Commit refreshed data
         run: |
           git config user.name  "events-radar-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add public/events.json public/events.csv public/events.db
+          git add events.json events.csv events.db
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
