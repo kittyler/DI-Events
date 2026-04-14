@@ -200,7 +200,7 @@
   /* ============ KPI STRIP ============ */
   .kpi-row {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     border-bottom: 1px solid var(--line);
   }
   .kpi {
@@ -759,14 +759,12 @@
     .main { grid-template-columns: 220px 1fr; }
     .side { display: none; }
     .kpi-row { grid-template-columns: repeat(4, 1fr); }
-    .kpi:nth-child(5) { display: none; }
   }
   @media (max-width: 860px) {
     .main { grid-template-columns: 1fr; }
     .filters { display: none; }
     .filters.open { display: block; position: fixed; inset: 0; z-index: 50; background: var(--panel); max-height: none; }
     .kpi-row { grid-template-columns: repeat(2, 1fr); }
-    .kpi:nth-child(4), .kpi:nth-child(5) { display: none; }
     .topbar { padding: 12px 16px; flex-wrap: wrap; }
     .page-header, .content { padding-left: 16px; padding-right: 16px; }
     .nav-tabs .nav-tab:not(.active) { display: none; }
@@ -806,7 +804,6 @@
       <button class="nav-tab active" data-page="events">Events</button>
       <button class="nav-tab" data-page="calendar">Calendar</button>
       <button class="nav-tab" data-page="sources">Sources</button>
-      <button class="nav-tab" data-page="about">About</button>
     </nav>
     <div class="topbar-right">
       <div class="refresh-indicator">
@@ -1117,7 +1114,6 @@ function renderKPIs() {
   $("#kpi-row").innerHTML = `
     <div class="kpi"><div class="kpi-label">Upcoming events</div><div class="kpi-value">${upcoming.length}</div><div class="kpi-sub">Across 26 sources</div></div>
     <div class="kpi"><div class="kpi-label">Next 30 days</div><div class="kpi-value">${next30.length}</div><div class="kpi-sub">${inPerson30} in-person · ${next30.length - inPerson30} other</div></div>
-    <div class="kpi"><div class="kpi-label">Flagship events</div><div class="kpi-value">${flagship}</div><div class="kpi-sub">Marquee dates</div></div>
     <div class="kpi"><div class="kpi-label">Free events</div><div class="kpi-value">${free}</div><div class="kpi-sub">No ticket cost</div></div>
     <div class="kpi"><div class="kpi-label">UK in-person</div><div class="kpi-value">${ukEvents}</div><div class="kpi-sub">London &amp; Cambridge</div></div>
   `;
@@ -1223,45 +1219,57 @@ function renderCalendar(list) {
     return;
   }
 
-  // Group by month
-  const byMonth = {};
+  // Index events by ISO date — each event claims every day from start through end (inclusive)
+  const byDate = {};
   list.forEach(e => {
-    // An event spans from start to end; add it to every month it touches
     let cur = parseDate(e.start);
     const end = parseDate(e.end);
     while (cur <= end) {
-      const key = `${cur.getFullYear()}-${String(cur.getMonth()+1).padStart(2,'0')}`;
-      (byMonth[key] = byMonth[key] || []).push({ ev: e, date: cur.toISOString().slice(0,10) });
+      const iso = cur.toISOString().slice(0,10);
+      (byDate[iso] = byDate[iso] || []).push(e);
       cur.setDate(cur.getDate() + 1);
     }
   });
 
-  const monthKeys = Object.keys(byMonth).sort();
+  // Build a continuous month range: this month through the month of the latest event
+  const latestIso = list.reduce((acc, e) => e.end > acc ? e.end : acc, list[0].end);
+  const latestDate = parseDate(latestIso);
+  // Cap the window at 12 months so we don't render hundreds of empty months if an outlier is far out
+  const maxEnd = new Date(TODAY.getFullYear(), TODAY.getMonth() + 12, 1);
+  const rangeEnd = latestDate < maxEnd ? latestDate : maxEnd;
+
   const dowLabels = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
   const todayStr = TODAY.toISOString().slice(0,10);
+  const monthsHtml = [];
 
-  const months = monthKeys.map(key => {
-    const [y, m] = key.split("-").map(Number);
-    const monthStart = new Date(y, m-1, 1);
-    const monthName = monthStart.toLocaleString("en-GB", { month: "long", year: "numeric" });
-    // Get first Monday on or before the 1st
-    const firstDayDow = (monthStart.getDay() + 6) % 7; // 0 = Monday
-    const gridStart = new Date(monthStart);
-    gridStart.setDate(1 - firstDayDow);
+  let cursor = new Date(TODAY.getFullYear(), TODAY.getMonth(), 1);
+  while (cursor <= rangeEnd) {
+    const y = cursor.getFullYear();
+    const m = cursor.getMonth(); // 0-based
+    const monthName = cursor.toLocaleString("en-GB", { month: "long", year: "numeric" });
+
+    // Find Monday on or before the 1st
+    const firstDayDow = (cursor.getDay() + 6) % 7; // 0 = Monday
+    const gridStart = new Date(y, m, 1 - firstDayDow);
+
+    // Find last day of month and the Sunday on or after it
+    const lastDay = new Date(y, m + 1, 0);
+    const lastDayDow = (lastDay.getDay() + 6) % 7;
+    const gridEnd = new Date(y, m, lastDay.getDate() + (6 - lastDayDow));
 
     // Count unique events in this month
-    const uniqueIds = new Set(byMonth[key].map(x => x.ev.id));
-
-    // Build cells
-    const cells = [];
-    for (let i = 0; i < 42; i++) {
-      const d = new Date(gridStart);
-      d.setDate(gridStart.getDate() + i);
+    const monthEventIds = new Set();
+    for (let d = new Date(y, m, 1); d <= lastDay; d.setDate(d.getDate() + 1)) {
       const iso = d.toISOString().slice(0,10);
-      const inMonth = d.getMonth() === m-1;
+      (byDate[iso] || []).forEach(e => monthEventIds.add(e.id));
+    }
+
+    const cells = [];
+    for (let d = new Date(gridStart); d <= gridEnd; d.setDate(d.getDate() + 1)) {
+      const iso = d.toISOString().slice(0,10);
+      const inMonth = d.getMonth() === m;
       const isToday = iso === todayStr;
-      const dayEvents = byMonth[key].filter(x => x.date === iso).map(x => x.ev);
-      // Dedupe (an event covering multi days could be listed once per day in byMonth)
+      const dayEvents = byDate[iso] || [];
       const seen = new Set();
       const unique = dayEvents.filter(e => seen.has(e.id) ? false : seen.add(e.id));
 
@@ -1278,22 +1286,23 @@ function renderCalendar(list) {
         }).join("")}
         ${more > 0 ? `<div class="cal-more">+ ${more} more</div>` : ""}
       </div>`);
-      if (!inMonth && d > new Date(y, m, 0) && i % 7 === 6) break; // stop early if past month
     }
 
-    return `<div class="cal-month">
+    monthsHtml.push(`<div class="cal-month">
       <div class="cal-month-header">
         <span>${monthName}</span>
-        <span class="cal-month-count">${uniqueIds.size} event${uniqueIds.size === 1 ? '' : 's'}</span>
+        <span class="cal-month-count">${monthEventIds.size} event${monthEventIds.size === 1 ? '' : 's'}</span>
       </div>
       <div class="cal-grid">
         ${dowLabels.map(l => `<div class="cal-dow">${l}</div>`).join("")}
         ${cells.join("")}
       </div>
-    </div>`;
-  }).join("");
+    </div>`);
 
-  container.innerHTML = `<div class="calendar"><div class="cal-months">${months}</div></div>`;
+    cursor = new Date(y, m + 1, 1);
+  }
+
+  container.innerHTML = `<div class="calendar"><div class="cal-months">${monthsHtml.join("")}</div></div>`;
 }
 
 /* ============================================================
@@ -1357,15 +1366,21 @@ function renderSide() {
 function renderSources() {
   const rows = SOURCES.map(s => `
     <tr style="border-top: 1px solid var(--line-soft);">
-      <td style="padding: 10px 14px; font-weight: 500;">${s.name}</td>
-      <td style="padding: 10px 14px;"><a href="${s.url}" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">${s.url}</a></td>
-      <td style="padding: 10px 14px; color: var(--ink-soft);">${s.method}</td>
-      <td style="padding: 10px 14px; color: var(--ink-soft);">${s.schedule}</td>
+      <td style="padding: 10px 14px; font-weight: 500; vertical-align: top;">${s.name}</td>
+      <td style="padding: 10px 14px; word-break: break-all;"><a href="${s.url}" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">${s.url}</a></td>
+      <td style="padding: 10px 14px; color: var(--ink-soft); vertical-align: top;">${s.method}</td>
+      <td style="padding: 10px 14px; color: var(--ink-soft); vertical-align: top; white-space: nowrap;">${s.schedule}</td>
     </tr>`).join("");
 
   $("#view-container").innerHTML = `
     <div style="border: 1px solid var(--line); border-radius: 6px; overflow: hidden;">
-      <table style="width: 100%; border-collapse: collapse; background: var(--panel); font-size: 12.5px;">
+      <table style="width: 100%; border-collapse: collapse; background: var(--panel); font-size: 12.5px; table-layout: fixed;">
+        <colgroup>
+          <col style="width: 28%;">
+          <col style="width: 52%;">
+          <col style="width: 10%;">
+          <col style="width: 10%;">
+        </colgroup>
         <thead>
           <tr style="background: #fbfaf6;">
             <th style="padding: 10px 14px; text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-mute);">Source</th>
@@ -1384,24 +1399,6 @@ function renderSources() {
 
 /* ============================================================
    RENDER: ABOUT PAGE
-   ============================================================ */
-function renderAbout() {
-  $("#view-container").innerHTML = `
-    <div style="max-width: 680px; font-size: 13.5px; line-height: 1.7; color: var(--ink-soft);">
-      <h3 style="font-family: Georgia, serif; font-size: 18px; color: var(--ink); margin-bottom: 12px;">About Events Radar</h3>
-      <p style="margin-bottom: 16px;">Events Radar aggregates networking events, conferences, and webinars relevant to practitioners working on disputes, investigations, and financial crime. Every event listed here comes from its organiser's own website. Every registration link is live.</p>
-
-      <h4 style="font-family: Georgia, serif; font-size: 14px; color: var(--ink); margin: 20px 0 8px;">How it works</h4>
-      <p style="margin-bottom: 12px;">A scheduled job fetches each configured source page once a day. Page HTML is passed to an LLM that extracts structured event records: title, organiser, dates, location, format, topics, cost, registration URL. Records are deduplicated and written to a database. This dashboard reads from that database.</p>
-
-      <h4 style="font-family: Georgia, serif; font-size: 14px; color: var(--ink); margin: 20px 0 8px;">Coverage</h4>
-      <p style="margin-bottom: 12px;">Currently 26 sources spanning commercial conference organisers (GIR, ACAMS, C5), regulators and think tanks (RUSI), academic institutions (Cambridge CIDOEC, BIICL), arbitration institutions (LCIA, ICC, ICCA, CIArb, Delos, Arbitral Women), dispute-resolution media (GAR, CDR, Thought Leaders 4, LIDW), bar associations (IBA), and law firm events (HSF, Gibson Dunn, WilmerHale). New sources can be added by editing the configuration — the LLM handles page parsing without bespoke code per source.</p>
-
-      <h4 style="font-family: Georgia, serif; font-size: 14px; color: var(--ink); margin: 20px 0 8px;">Data quality</h4>
-      <p style="margin-bottom: 12px;">The extractor returns a confidence score for each event. Records below 0.5 are flagged for manual review. Events past their end date are hidden from default views. Every registration URL is retained as source-of-truth — if the data shown here is wrong, the organiser's page is authoritative.</p>
-    </div>`;
-}
-
 /* ============================================================
    RENDER: MAIN
    ============================================================ */
@@ -1441,14 +1438,6 @@ function render() {
     $("#page-title").textContent = "Data sources";
     $("#page-sub").textContent = "Where the data comes from and how often it refreshes.";
     renderSources();
-  } else if (state.page === "about") {
-    filters.style.display = "none";
-    side.style.display = "none";
-    viewToggle.style.display = "none";
-    $("#content-title").textContent = "About";
-    $("#page-title").textContent = "About";
-    $("#page-sub").textContent = "What this is and how it works.";
-    renderAbout();
   }
 }
 
