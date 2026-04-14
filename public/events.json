@@ -1,0 +1,415 @@
+{
+  "generated_at": "2026-04-14T06:30:52.480082Z",
+  "event_count": 18,
+  "events": [
+    {
+      "id": "EVT-9C6B0CAF5D",
+      "title": "ICCA 2026",
+      "organiser": "International Council for Commercial Arbitration",
+      "start": "2026-04-12",
+      "end": "2026-04-15",
+      "city": "Madrid",
+      "country": "Spain",
+      "region": "Europe",
+      "format": "In-person",
+      "topics": [
+        "Arbitration",
+        "Disputes"
+      ],
+      "audience": "Mixed",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://icca2026.es/",
+      "flags": [
+        "Flagship"
+      ],
+      "summary": "Biennial ICCA Congress in Madrid bringing together global arbitration practitioners to examine pressing arbitration issues and developments."
+    },
+    {
+      "id": "EVT-2BEC8739AC",
+      "title": "YIAG Fireside Chat in Madrid",
+      "organiser": "LCIA",
+      "start": "2026-04-13",
+      "end": "2026-04-13",
+      "city": "Madrid",
+      "country": "Spain",
+      "region": "Europe",
+      "format": "In-person",
+      "topics": [
+        "Arbitration",
+        "Disputes",
+        "Networking"
+      ],
+      "audience": "Junior",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://www.lcia.org/events/yiag-fireside-chat-in-madrid-379.aspx",
+      "flags": [],
+      "summary": "Informal discussion event in Madrid organised by LCIA's Young International Arbitration Group covering international arbitration topics."
+    },
+    {
+      "id": "EVT-58CA67AB30",
+      "title": "ICC Tokyo Arbitration Day",
+      "organiser": "ICC",
+      "start": "2026-04-22",
+      "end": "2026-04-22",
+      "city": "Tokyo",
+      "country": "Japan",
+      "region": "APAC",
+      "format": "In-person",
+      "topics": [
+        "Arbitration",
+        "Disputes"
+      ],
+      "audience": "Mixed",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://2go.iccwbo.org/2026-icc-tokyo-arbitration.html",
+      "flags": [],
+      "summary": "One-day ICC arbitration event in Tokyo focusing on Asian arbitration trends and international commercial arbitration practice."
+    },
+    {
+      "id": "EVT-41BC32B6E5",
+      "title": "Prague Arbitration Day",
+      "organiser": "Prague Arbitration Day",
+      "start": "2026-04-23",
+      "end": "2026-04-23",
+      "city": "Prague",
+      "country": "Czech Republic",
+      "region": "Europe",
+      "format": "In-person",
+      "topics": [
+        "Arbitration",
+        "Disputes"
+      ],
+      "audience": "Mixed",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://praguearbitrationday.com/",
+      "flags": [],
+      "summary": "Annual one-day conference in Prague discussing arbitration developments in Central Europe and international arbitration practice."
+    },
+    {
+      "id": "EVT-6CBB56F855",
+      "title": "YIAG Tylney Hall Symposium",
+      "organiser": "LCIA",
+      "start": "2026-04-24",
+      "end": "2026-04-24",
+      "city": "England",
+      "country": "United Kingdom",
+      "region": "UK",
+      "format": "In-person",
+      "topics": [
+        "Arbitration",
+        "Disputes",
+        "Networking"
+      ],
+      "audience": "Junior",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://www.lcia.org/events/2026-yiag-april-tylney-hall-symposium-363.aspx",
+      "flags": [],
+      "summary": "YIAG symposium organised by the London Court of International Arbitration focused on international arbitration topics for young practitioners."
+    },
+    {
+      "id": "EVT-41AEA97793",
+      "title": "London International Disputes Week 2026",
+      "organiser": "LIDW",
+      "start": "2026-06-01",
+      "end": "2026-06-05",
+      "city": "London",
+      "country": "United Kingdom",
+      "region": "UK",
+      "format": "Hybrid",
+      "topics": [
+        "Disputes",
+        "Arbitration",
+        "Litigation",
+        "Mediation",
+        "Networking"
+      ],
+      "audience": "Mixed",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://register.lidw.co.uk/",
+      "flags": [
+        "Flagship"
+      ],
+      "summary": "Seventh annual gathering of global international disputes community featuring 150+ events over five days. Theme: Tradition, trust and transformation in international dispute resolution. Expected 10,000+ attendees from 100+ countries."
+    },
+    {
+      "id": "EVT-E5C66A6095",
+      "title": "LIDW Opening Reception",
+      "organiser": "LIDW",
+      "start": "2026-06-01",
+      "end": "2026-06-01",
+      "city": "London",
+      "country": "United Kingdom",
+      "region": "UK",
+      "format": "In-person",
+      "topics": [
+        "Networking"
+      ],
+      "audience": "Mixed",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://register.lidw.co.uk/event/587",
+      "flags": [],
+      "summary": "Opening reception at Southwark Cathedral to launch London International Disputes Week, providing networking opportunities for international disputes professionals."
+    },
+    {
+      "id": "EVT-1F8768AA6C",
+      "title": "International Arbitration Day",
+      "organiser": "London International Disputes Week",
+      "start": "2026-06-01",
+      "end": "2026-06-01",
+      "city": "London",
+      "country": "United Kingdom",
+      "region": "UK",
+      "format": "In-person",
+      "topics": [
+        "Arbitration",
+        "Disputes",
+        "Networking"
+      ],
+      "audience": "Mixed",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://register.lidw.co.uk/event/580",
+      "flags": [
+        "Flagship"
+      ],
+      "summary": "Opening event of London International Disputes Week 2026, focusing on international arbitration. Part of week-long gathering of global disputes community under theme 'Tradition, trust and transformation in international dispute resolution'."
+    },
+    {
+      "id": "EVT-EA0D56A8C5",
+      "title": "Opening Reception",
+      "organiser": "London International Disputes Week",
+      "start": "2026-06-01",
+      "end": "2026-06-01",
+      "city": "London",
+      "country": "United Kingdom",
+      "region": "UK",
+      "format": "In-person",
+      "topics": [
+        "Networking"
+      ],
+      "audience": "Mixed",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://register.lidw.co.uk/event/587",
+      "flags": [
+        "Flagship"
+      ],
+      "summary": "Opening networking reception at Southwark Cathedral to launch London International Disputes Week 2026, bringing together international disputes community from over 100 countries."
+    },
+    {
+      "id": "EVT-30414120EA",
+      "title": "LIDW Main Conference",
+      "organiser": "LIDW",
+      "start": "2026-06-02",
+      "end": "2026-06-04",
+      "city": "London",
+      "country": "United Kingdom",
+      "region": "UK",
+      "format": "In-person",
+      "topics": [
+        "Disputes",
+        "Arbitration",
+        "Litigation",
+        "Mediation"
+      ],
+      "audience": "Mixed",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://register.lidw.co.uk/event/579",
+      "flags": [
+        "Flagship"
+      ],
+      "summary": "Primary LIDW conference for 700+ delegates covering international dispute resolution topics including arbitration, litigation and mediation with drinks reception."
+    },
+    {
+      "id": "EVT-EBCBD1B168",
+      "title": "LIDW NextGen Social at Boulebar",
+      "organiser": "LIDW NextGen",
+      "start": "2026-06-02",
+      "end": "2026-06-04",
+      "city": "London",
+      "country": "United Kingdom",
+      "region": "UK",
+      "format": "In-person",
+      "topics": [
+        "Networking"
+      ],
+      "audience": "Junior",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://register.lidw.co.uk/event/612",
+      "flags": [],
+      "summary": "Informal social networking event at Boulebar for junior and young-at-heart practitioners in international dispute resolution during LIDW."
+    },
+    {
+      "id": "EVT-58EDAC6651",
+      "title": "Main Conference",
+      "organiser": "London International Disputes Week",
+      "start": "2026-06-02",
+      "end": "2026-06-05",
+      "city": "London",
+      "country": "United Kingdom",
+      "region": "UK",
+      "format": "Hybrid",
+      "topics": [
+        "Arbitration",
+        "Litigation",
+        "Mediation",
+        "Disputes",
+        "Policy",
+        "Networking"
+      ],
+      "audience": "Mixed",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://register.lidw.co.uk/event/579",
+      "flags": [
+        "Flagship"
+      ],
+      "summary": "Main conference for over 700 delegates exploring tradition, trust and transformation in international dispute resolution. Covers arbitration, litigation and mediation with drinks reception and in-person/virtual attendance options."
+    },
+    {
+      "id": "EVT-5A29C6918A",
+      "title": "LegalTech Showcase",
+      "organiser": "London International Disputes Week",
+      "start": "2026-06-02",
+      "end": "2026-06-05",
+      "city": "London",
+      "country": "United Kingdom",
+      "region": "UK",
+      "format": "In-person",
+      "topics": [
+        "Disputes"
+      ],
+      "audience": "Mixed",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://register.lidw.co.uk/event/601",
+      "flags": [],
+      "summary": "Technology showcase focused on legal technology solutions for international disputes resolution during London International Disputes Week."
+    },
+    {
+      "id": "EVT-BF70313CF7",
+      "title": "LIDW Gala Dinner",
+      "organiser": "LIDW",
+      "start": "2026-06-03",
+      "end": "2026-06-03",
+      "city": "London",
+      "country": "United Kingdom",
+      "region": "UK",
+      "format": "In-person",
+      "topics": [
+        "Networking"
+      ],
+      "audience": "Mixed",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://register.lidw.co.uk/event/588",
+      "flags": [],
+      "summary": "Formal gala dinner at Raffles London providing networking opportunity for international disputes community during LIDW."
+    },
+    {
+      "id": "EVT-567AFFD8E8",
+      "title": "LIDW NextGen Social at Boulebar",
+      "organiser": "London International Disputes Week",
+      "start": "2026-06-03",
+      "end": "2026-06-03",
+      "city": "London",
+      "country": "United Kingdom",
+      "region": "UK",
+      "format": "In-person",
+      "topics": [
+        "Networking"
+      ],
+      "audience": "Junior",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://register.lidw.co.uk/event/612",
+      "flags": [],
+      "summary": "Informal social networking event at Boulebar for junior and young-at-heart practitioners in the international disputes community during London International Disputes Week."
+    },
+    {
+      "id": "EVT-A1967334F0",
+      "title": "Gala Dinner",
+      "organiser": "London International Disputes Week",
+      "start": "2026-06-04",
+      "end": "2026-06-04",
+      "city": "London",
+      "country": "United Kingdom",
+      "region": "UK",
+      "format": "In-person",
+      "topics": [
+        "Networking"
+      ],
+      "audience": "Mixed",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://register.lidw.co.uk/event/588",
+      "flags": [
+        "Flagship"
+      ],
+      "summary": "Formal gala dinner at Raffles for London International Disputes Week delegates to network with international disputes community."
+    },
+    {
+      "id": "EVT-A199FBAB25",
+      "title": "43rd Cambridge International Symposium on Economic Crime",
+      "organiser": "Cambridge International Symposium on Economic Crime",
+      "start": "2026-08-23",
+      "end": "2026-08-30",
+      "city": "Cambridge",
+      "country": "United Kingdom",
+      "region": "UK",
+      "format": "In-person",
+      "topics": [
+        "Financial Crime",
+        "Fraud",
+        "AML",
+        "ABC",
+        "Bribery",
+        "Enforcement",
+        "Compliance",
+        "Policy",
+        "Networking"
+      ],
+      "audience": "Mixed",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://www.crimesymposium.org/register",
+      "flags": [
+        "Flagship"
+      ],
+      "summary": "Week-long symposium on economic crime at Jesus College, Cambridge. Full-week and day tickets available, including sessions, meals, cocktails, and optional accommodation. Programme covers economic crime topics with networking opportunities."
+    },
+    {
+      "id": "EVT-88385E6D36",
+      "title": "Dispute Resolution in the International Energy Business",
+      "organiser": "LCIA-AIEN",
+      "start": "2026-10-15",
+      "end": "2026-10-16",
+      "city": "London",
+      "country": "United Kingdom",
+      "region": "UK",
+      "format": "In-person",
+      "topics": [
+        "Arbitration",
+        "Disputes",
+        "Mediation"
+      ],
+      "audience": "Mixed",
+      "cost": "Paid",
+      "costDisplay": "Register",
+      "url": "https://www.lcia.org/events/2026-lcia-aien-joint-conference-dispute-resolution-in-the-inter-367.aspx",
+      "flags": [
+        "Flagship"
+      ],
+      "summary": "Two-day joint conference between LCIA and the Association of International Energy Negotiators examining dispute resolution mechanisms in international energy sector transactions and projects."
+    }
+  ]
+}
