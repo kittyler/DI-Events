@@ -164,9 +164,16 @@ If a field is not discernible, return the existing value from the input record u
 # FETCH
 # ---------------------------------------------------------------------------
 HTTP_HEADERS = {
-    "User-Agent": "EventsRadar/1.0 (+https://github.com/yourname/events-radar)",
-    "Accept": "text/html,application/xhtml+xml",
-    "Accept-Language": "en-GB,en;q=0.8",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-GB,en;q=0.9",
+    "Accept-Encoding": "gzip, deflate",
+    "Connection": "keep-alive",
+    "Upgrade-Insecure-Requests": "1",
+    "Sec-Fetch-Dest": "document",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "none",
 }
 
 def fetch_html(url: str, timeout: int = 30) -> str:
