@@ -350,6 +350,7 @@ def export_json(conn):
     payload = {
         "generated_at": datetime.utcnow().isoformat() + "Z",
         "event_count": len(events),
+        "sources": SOURCES,
         "events": events,
     }
     out_path = OUTPUT_DIR / "events.json"
