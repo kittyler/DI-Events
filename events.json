@@ -1,6 +1,112 @@
 {
-  "generated_at": "2026-08-11T13:41:56.900522Z",
+  "generated_at": "2026-08-11T15:13:39.471993Z",
   "event_count": 57,
+  "sources": [
+    {
+      "name": "Global Investigations Review",
+      "url": "https://globalinvestigationsreview.com/events"
+    },
+    {
+      "name": "ACAMS",
+      "url": "https://www.acams.org/en/events/acams-events-view-all-upcoming-events"
+    },
+    {
+      "name": "C5 Anti-Corruption London",
+      "url": "https://www.c5-online.com/ac-london/"
+    },
+    {
+      "name": "C5 FCPA Portfolio",
+      "url": "https://www.c5-online.com/conference/anti-corruption-fcpa/"
+    },
+    {
+      "name": "Cambridge Economic Crime Symposium",
+      "url": "https://www.crimesymposium.org/register"
+    },
+    {
+      "name": "RUSI CFS",
+      "url": "https://www.rusi.org/explore-our-research/research-groups/centre-for-finance-and-security"
+    },
+    {
+      "name": "London Court of International Arbitration",
+      "url": "https://www.lcia.org/lcia-events/events_schedule.aspx"
+    },
+    {
+      "name": "Young International Arbitration Group",
+      "url": "https://www.lcia.org/Membership/YIAG/Young_International_Arbitration_Group.aspx"
+    },
+    {
+      "name": "International Chamber of Commerce",
+      "url": "https://iccwbo.org/news-publications/events/"
+    },
+    {
+      "name": "ICC Young Arbitrators Forum",
+      "url": "https://iccwbo.org/dispute-resolution/professional-development/young-arbitrators-forum-yaf/"
+    },
+    {
+      "name": "ICC United Kingdom",
+      "url": "https://iccwbo.uk/collections/events"
+    },
+    {
+      "name": "International Council for Commercial Arbitration",
+      "url": "https://www.arbitration-icca.org/events"
+    },
+    {
+      "name": "Young ICCA",
+      "url": "https://www.youngicca.org/events"
+    },
+    {
+      "name": "Chartered Institute of Arbitrators",
+      "url": "https://www.ciarb.org/events"
+    },
+    {
+      "name": "Arbitral Women",
+      "url": "https://www.arbitralwomen.org/aw-events/"
+    },
+    {
+      "name": "Delos Dispute Resolution",
+      "url": "https://delosdr.org/index.php/delos-events-calendar/"
+    },
+    {
+      "name": "Global Arbitration Review",
+      "url": "https://globalarbitrationreview.com/events"
+    },
+    {
+      "name": "LIDW",
+      "url": "https://register.lidw.co.uk/"
+    },
+    {
+      "name": "IAC London Arbitration Calendar",
+      "url": "https://www.iac-london.com/arbitral-events-2026/"
+    },
+    {
+      "name": "Commercial Dispute Resolution",
+      "url": "https://www.cdr-news.com/conferences/"
+    },
+    {
+      "name": "Thought Leaders 4",
+      "url": "https://thoughtleaders4.com/tl4-disputes/events"
+    },
+    {
+      "name": "International Bar Association",
+      "url": "https://www.ibanet.org/conferences"
+    },
+    {
+      "name": "British Institute of International and Comparative Law",
+      "url": "https://www.biicl.org/events"
+    },
+    {
+      "name": "Herbert Smith Freehills",
+      "url": "https://www.hsfkramer.com/events"
+    },
+    {
+      "name": "Gibson Dunn",
+      "url": "https://www.gibsondunn.com/events/"
+    },
+    {
+      "name": "WilmerHale",
+      "url": "https://www.wilmerhale.com/en/insights/events"
+    }
+  ],
   "events": [
     {
       "id": "EVT-995BC15BF2",
