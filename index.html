@@ -952,7 +952,12 @@
    ============================================================ */
 let EVENTS = [];
 
-const SOURCES = [
+// Fallback only — used before the first successful fetch, or if an older
+// events.json (from before the scraper started exporting "sources") is
+// loaded. Once events.json includes a "sources" array, that becomes the
+// single source of truth and this list is ignored. Keep scraper.py's
+// SOURCES list as the place to actually add/remove/edit sources.
+let SOURCES = [
   { name: "Global Investigations Review", url: "https://globalinvestigationsreview.com/events" },
   { name: "ACAMS", url: "https://www.acams.org/en/events/acams-events-view-all-upcoming-events" },
   { name: "C5 Anti-Corruption London", url: "https://www.c5-online.com/ac-london/" },
@@ -1863,6 +1868,9 @@ async function loadData() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const payload = await res.json();
     EVENTS = (payload.events || []).map(ensureCategories);
+    if (Array.isArray(payload.sources) && payload.sources.length) {
+      SOURCES = payload.sources;
+    }
     if (payload.generated_at) {
       const d = new Date(payload.generated_at);
       const rel = relativeTime(d);
