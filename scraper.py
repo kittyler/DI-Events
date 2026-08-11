@@ -78,7 +78,7 @@ SOURCES = [
     {"name": "LIDW", "url": "https://register.lidw.co.uk/"},
     {"name": "IAC London Arbitration Calendar", "url": "https://www.iac-london.com/arbitral-events-2026/"},
     {"name": "Commercial Dispute Resolution", "url": "https://www.cdr-news.com/conferences/"},
-    {"name": "Thought Leaders 4", "url": "https://thoughtleaders4.com/"},
+    {"name": "Thought Leaders 4", "url": "https://thoughtleaders4.com/tl4-disputes/events"},
 
     # --- Bar / academic ---
     {"name": "International Bar Association", "url": "https://www.ibanet.org/conferences"},
