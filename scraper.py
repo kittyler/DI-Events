@@ -65,7 +65,7 @@ SOURCES = [
     {"name": "London Court of International Arbitration", "url": "https://www.lcia.org/lcia-events/events_schedule.aspx"},
     {"name": "Young International Arbitration Group", "url": "https://www.lcia.org/Membership/YIAG/Young_International_Arbitration_Group.aspx"},
     {"name": "International Chamber of Commerce", "url": "https://iccwbo.org/news-publications/events/"},
-    {"name": "ICC Young Arbitrators Forum", "url": "https://iccwbo.org/dispute-resolution/professional-development/young-arbitrators-forum-yaf/"},
+    {"name": "ICC Young Arbitration and ADR Forum (YAAF)", "url": "https://iccwbo.org/dispute-resolution/professional-development/yaaf-programme/"},
     {"name": "ICC United Kingdom", "url": "https://iccwbo.uk/collections/events"},
     {"name": "International Council for Commercial Arbitration", "url": "https://www.arbitration-icca.org/events"},
     {"name": "Young ICCA", "url": "https://www.youngicca.org/events"},
@@ -86,8 +86,100 @@ SOURCES = [
 
     # --- Law firm events ---
     {"name": "Herbert Smith Freehills", "url": "https://www.hsfkramer.com/events"},
-    {"name": "Gibson Dunn", "url": "https://www.gibsondunn.com/events/"},
-    {"name": "WilmerHale", "url": "https://www.wilmerhale.com/en/insights/events"},
+    {"name": "Gibson Dunn", "url": "https://www.gibsondunn.com/insights/"},
+    {"name": "WilmerHale", "url": "https://www.wilmerhale.com/en/insights-and-events"},
+    {"name": "Freshfields Bruckhaus Deringer", "url": "https://www.freshfields.com/en/our-thinking/events"},
+    {"name": "Simmons & Simmons", "url": "https://www.simmons-simmons.com/en/insights?type=events"},
+    {"name": "A&O Shearman", "url": "https://seminars.aoshearman.com/seminars?event_name="},
+    {"name": "Addleshaw Goddard", "url": "https://www.addleshawgoddard.com/en/events/"},
+    {"name": "Clifford Chance", "url": "https://www.cliffordchance.com/insights/thought_leadership/seminars-training-and-events.html"},
+    {"name": "Hogan Lovells Cadwalader", "url": "https://www.hlc.com/en/events"},
+    {"name": "Linklaters (Sustainable Futures)", "url": "https://sustainablefutures.linklaters.com/tag/webinars%20%26%20events"},
+    {"name": "Ropes & Gray", "url": "https://www.ropesgray.com/en/news-and-events"},
+    {"name": "Skadden", "url": "https://www.skadden.com/insights?skip=0&type=0416a0ae-d175-4993-bbe0-6cf0cf7397da&hassearched=true"},
+    {"name": "White & Case", "url": "https://www.whitecase.com/insights/search?type=2"},
+    {"name": "Kirkland & Ellis", "url": "https://www.kirkland.com/insights?type=e47e40af-b7c0-49af-902f-eb8741bc6463"},
+    {"name": "Norton Rose Fulbright", "url": "https://www.nortonrosefulbright.com/en/knowledge/webinars-and-events"},
+    {"name": "Peters & Peters", "url": "https://www.petersandpeters.com/category/thinking/events/"},
+    {"name": "Baker McKenzie (Global Trade)", "url": "https://www.bakermckenzie.com/en/insight/events/baker-mckenzie-global-trade-webinars-and-events"},
+    {"name": "Mishcon de Reya", "url": "https://www.mishcon.com/academy/live"},
+    {"name": "Covington & Burling", "url": "https://www.cov.com/en/events"},
+    {"name": "Davis Polk", "url": "https://www.davispolk.com/insights/client-updates"},
+    {"name": "King & Spalding", "url": "https://www.kslaw.com/news-and-insights?locale=en&post_type=1"},
+    {"name": "Latham & Watkins", "url": "https://www.lw.com/en/insights-listing#sort=%40contentdate%20descending"},
+    {"name": "Paul, Weiss", "url": "https://www.paulweiss.com/insights/events"},
+    {"name": "Akin Gump", "url": "https://www.akingump.com/en/insights"},
+    {"name": "Cleary Gottlieb", "url": "https://www.clearygottlieb.com/news-and-insights/events-listing"},
+    {"name": "Sidley Austin", "url": "https://www.sidley.com/en/insights?sortCriteria=%40datesort%20descending&f-contenttype=Events&cq=%40alltemplates%3D%3D(883C0625A81743E1BA1683DAEB2C73AD)%20AND%20NOT%20%40ez120xcludez32xfromz32xsearch%3D%3D1"},
+    {"name": "Simpson Thacher & Bartlett", "url": "https://www.stblaw.com/about-us/events"},
+    {"name": "Jenner & Block", "url": "https://www.jenner.com/en/news-insights?nt=35920"},
+    {"name": "Jones Day", "url": "https://www.jonesday.com/en/insights?tab=events"},
+    {"name": "Quinn Emanuel", "url": "https://www.quinnemanuel.com/the-firm/news-events/"},
+
+    # --- Regional UK: Manchester / Leeds / Liverpool / Birmingham ---
+    # FLAGGED: these are general regional professional-body event pages, not
+    # topic-filtered feeds. Expect a lower relevant-event hit rate than the
+    # national/specialist sources above (e.g. law society pages carry a lot
+    # of social/networking content) — the existing RELEVANCE filter in
+    # SYSTEM_PROMPT will still discard anything off-topic, but confirm these
+    # are the right regional bodies for your purposes; there may be other
+    # Northern/Midlands-specific chambers, ICAEW forensic groups, or ACFE UK
+    # chapter pages worth adding that weren't verified here.
+    {"name": "R3 (Association of Business Recovery Professionals)", "url": "https://www.r3.org.uk/events-training/"},
+    {"name": "Insolvency Practitioners Association", "url": "https://insolvency-practitioners.org.uk/upcoming-events/"},
+    {"name": "Fraud Advisory Panel", "url": "https://www.fraudadvisorypanel.org/feed"},
+    {"name": "Manchester Law Society", "url": "https://manchesterlawsociety.org.uk/events-training/events/"},
+    {"name": "Leeds Law Society", "url": "https://www.leedslawsociety.org.uk/events-training/events/"},
+    {"name": "Liverpool Law Society", "url": "https://www.liverpoollawsociety.org.uk/events/"},
+    {"name": "Birmingham Law Society", "url": "https://birminghamlawsociety.co.uk/"},
+
+    # --- Investigations & asset recovery conference ---
+    {"name": "London International Investigations and Asset Recovery Conference (LIIARC)", "url": "https://www.liiarc.co.uk/copy-of-schedule-2026"},
+    {"name": "OffshoreAlert", "url": "https://www.offshorealert.com/events/"},
+
+    # --- Fraud forums / conferences ---
+    # FLAGGED: fraudconference.com (ACFE Global Fraud Conference) is a single
+    # large annual US-based conference (Boston 2026), not a general UK-facing
+    # feed — included as requested, but note it's a different profile from
+    # the regional/UK forums below.
+    {"name": "London Fraud Forum", "url": "https://www.londonfraudforum.co.uk/event-bookings"},
+    {"name": "ACFE Global Fraud Conference", "url": "https://www.fraudconference.com/"},
+    {"name": "North West Fraud Forum", "url": "https://northwestfraudforum.co.uk/events"},
+
+    # --- Sports disputes, arbitration & integrity ---
+    # Scoped narrowly per user request: sports arbitration (CAS-adjacent),
+    # anti-doping, safeguarding investigations, integrity/corruption in
+    # sport. General commercial sports law (contracts, image rights,
+    # broadcasting) is NOT in scope here, and the RELEVANCE filter below
+    # has been updated accordingly — see SYSTEM_PROMPT changes.
+    # FLAGGED: Sport Resolutions' seminar listings are frequently empty
+    # ("no upcoming seminars at this time" at time of writing) — this
+    # source may return few or no events between conference cycles.
+    # FLAGGED: LawInSport's general events page mixes disputes/integrity
+    # content with commercial sports law (Football Law, Motorsport,
+    # Risk & Insurance conferences) — expect the RELEVANCE filter to
+    # discard most of what's listed there, keeping only genuinely
+    # dispute/arbitration/integrity-relevant sessions if any appear.
+    {"name": "Sport Resolutions", "url": "https://www.sportresolutions.com/annual-conference"},
+    {"name": "LawInSport", "url": "https://www.lawinsport.com/sports-law-events/upcoming-events"},
+
+    # --- Additional bar/chambers/regional sources ---
+    # FLAGGED: manchesterlawsociety.org.uk/events-training/ (landing page)
+    # was requested, but the site's actual listing page — already in
+    # SOURCES above — is events-training/events/. Not added separately
+    # to avoid double-fetching the same underlying content; let me know
+    # if the landing page carries different listings and this should change.
+    # FLAGGED: pro-manchester and Brabners' events pages are general
+    # regional business/networking hubs (conferences, retail, care sector,
+    # games industry) — expect a low relevant-event hit rate, same caveat
+    # as the other regional law society sources.
+    {"name": "Chancery Bar Association", "url": "https://www.chba.org.uk/latest"},
+    {"name": "Women in the Law UK", "url": "https://www.womeninthelawuk.com/category/events/"},
+    {"name": "pro-manchester", "url": "https://www.pro-manchester.co.uk/events/"},
+    {"name": "Sanctions Conference Manchester", "url": "https://sanctionsconferencemanchester.com/attendees-%26-agenda"},
+    {"name": "AML Intelligence Boardroom Series", "url": "https://www.amlintelligence.com/boardroom-series/"},
+    {"name": "Brabners", "url": "https://www.brabners.com/events"},
+    {"name": "Littleton Chambers", "url": "https://littletonchambers.com/resources/events/"},
 ]
 
 # ---------------------------------------------------------------------------
