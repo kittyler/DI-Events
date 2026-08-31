@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-24T05:42:58.293426Z",
-  "event_count": 56,
+  "generated_at": "2026-08-31T11:29:23.658050Z",
+  "event_count": 55,
   "sources": [
     {
       "name": "Global Investigations Review",
@@ -300,27 +300,6 @@
     }
   ],
   "events": [
-    {
-      "id": "EVT-E4AA5D446B",
-      "title": "Young ICCA Cross Examination Masterclass & Showcase",
-      "organiser": "Young ICCA",
-      "start": "2026-08-18",
-      "end": "2026-08-18",
-      "city": "Lima",
-      "country": "Peru",
-      "region": "LATAM",
-      "format": "In-person",
-      "topics": [
-        "Arbitration",
-        "Disputes"
-      ],
-      "audience": "Mixed",
-      "cost": "Free",
-      "costDisplay": "Register",
-      "url": "https://www.youngicca.org/young-icca-cross-examination-masterclass-showcase",
-      "flags": [],
-      "summary": "Interactive skills workshop focused on cross-examination techniques for arbitration practitioners. Combines masterclass instruction with practical showcase demonstrations."
-    },
     {
       "id": "EVT-A199FBAB25",
       "title": "43rd Cambridge International Symposium on Economic Crime",
